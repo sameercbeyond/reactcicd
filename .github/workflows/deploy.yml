@@ -8,14 +8,13 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-  
-  steps:
+    steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         persist-credentials: false
     - name: Use Node.js
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v4
       with:
         node-version: '22.14.0'
     - name: install Deps
@@ -23,7 +22,7 @@ jobs:
     - name: Build
       run: npm run build
     - name: Deploy to production
-      if: github.ref = 'refs/heads/main'
+      if: github.ref == 'refs/heads/main'
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         branch: gh-pages
