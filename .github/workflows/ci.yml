@@ -26,7 +26,3 @@ jobs:
         node-version: '22.14.0'
     - name: install deps
       run: npm install
-      if: github.ref = 'refs/heads/main'
-      uses: JamesIves/github-pages-deploy-action@v4
-      with:
-        branch: gh-pages
